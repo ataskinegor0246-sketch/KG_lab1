@@ -1,12 +1,13 @@
 import numpy as np
 from math import floor
 from PIL import Image
+from pathlib import Path
 
 ing_mat = np.zeros((1000, 1000, 3), dtype = np.uint8)
 
 ing_mat+=0
 
-
+path = Path(__file__).resolve().parent.parent / "model.obj"
 
 def draw_line(x0:np.uint8, y0:np.uint8, x1:np.uint8, y1:np.uint8, image: np.ndarray) -> None:
     """Рисует линию между (x0, y0) и (x1, y1) через алгоритм DDA"""
@@ -25,7 +26,7 @@ def draw_line(x0:np.uint8, y0:np.uint8, x1:np.uint8, y1:np.uint8, image: np.ndar
 
 #draw_line(10, 10, 1000, 900, ing_mat)
 
-file = open("model.obj")
+file = open(path)
 
 vertex = []
 faces = []
@@ -61,4 +62,4 @@ for face in faces:
 
 
 img = Image.fromarray(ing_mat)
-img.save('img.png')
+img.save("img.png")
