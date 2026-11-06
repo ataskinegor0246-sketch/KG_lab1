@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 from numba import njit
 import tkinter as tk
 import random
-
+from pathlib import Path
 
 @njit(cache=True)
 def baricentcricCoord(x:np.uint8,y:np.uint8,
@@ -217,8 +217,8 @@ class APP:
             self.renderer.shift += 50
         elif k == 'r':
             self.renderer.R = random.randint(0, 255)
-            self.renderer.G += random.randint(0, 255)
-            self.renderer.B += random.randint(0, 255)
+            self.renderer.G = random.randint(0, 255)
+            self.renderer.B = random.randint(0, 255)
         elif k == 'i':
             self.renderer.invertY *= -1
         elif k == 'space':
@@ -262,7 +262,8 @@ class APP:
         self.root.mainloop()
     
 if __name__ == '__main__':
-    scene = Scene("model.obj")
+    path = Path(__file__).resolve().parent.parent / "model.obj"
+    scene = Scene(path)
     renderer = Renderer(1000, 1000, 5000, 500)
     renderer.render(scene)
 
