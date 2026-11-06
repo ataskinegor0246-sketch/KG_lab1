@@ -98,7 +98,7 @@ for face in faces:
                     p2[0], p2[1], p2[2], 
                     p3[0], p3[1], p3[2]))
     if(cos < 0):
-        color = [-255*cos,0,0 ]
+        color = [-255*cos,20*cos,100*cos ]
         drawTriangle(ing_mat,
                     floor(p1[0]*5000+500),floor(-p1[1]*5000+500),floor(p1[2]*5000+500),
                     floor(p2[0]*5000+500),floor(-p2[1]*5000+500),floor(p2[2]*5000+500),
